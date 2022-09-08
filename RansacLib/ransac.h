@@ -380,7 +380,7 @@ class LocallyOptimizedMSAC : public RansacBase {
       sample = inliers_base;
       utils::RandomShuffleAndResize(kNonMinSampleSize, rng, &sample);
 
-      Model m_non_min;
+      Model m_non_min = m_init;
       if (!solver.NonMinimalSolver(sample, &m_non_min)) continue;
 
       ScoreModel(solver, m_non_min, kSqInThresh, &score);
